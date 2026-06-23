@@ -7,6 +7,9 @@ import Details from "../Details/Details"
 import Notes from "../Notes/Notes"
 import PostNotes from "../Notes/Components/PostNotes"
 import Publish from "../Publish/Publish"
+import AddUser from "../AddUser/addUser"
+
+
 
 const AppRouter = () => {
   return (
@@ -25,6 +28,7 @@ const AppRouter = () => {
       <Route path=":id" element={<PostNotes />} />
     </Route>
     <Route path="publish" element={<Publish/>}/>
+    <Route path="add" element={<AddUser/>}/>
   </Route> 
 
   

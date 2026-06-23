@@ -4,6 +4,7 @@ import { MdLocalPostOffice } from "react-icons/md";
 import { Link ,Outlet } from "react-router-dom";
 import { CgNotes } from "react-icons/cg";
 import { MdOutlinePublish } from "react-icons/md";
+import { IoIosPersonAdd } from "react-icons/io";
 
 const NavigationMenu2 = () => {
   return (
@@ -39,6 +40,11 @@ const NavigationMenu2 = () => {
                         <Link to="/home/publish" className="flex items-center gap-3">
                         <MdOutlinePublish />
                         publish
+                    </Link></li>
+                    <li className="text-2xl">
+                        <Link to="/home/Add" className="flex items-center gap-3">
+                        <IoIosPersonAdd />
+                        Add User
                     </Link></li>
                 </ul>
             </div>

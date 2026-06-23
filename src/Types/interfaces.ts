@@ -118,3 +118,43 @@ export interface NewPost {
     body: string;
     userId: number;
 }
+
+export interface UserFormData {
+    name: string;
+    username: string;
+    website: string;
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    lat: string;
+    lng: string;
+    email: string;
+    phone: string;
+    companyName: string;
+    catchPhrase: string;
+}
+
+export interface UserResponse {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    phone: string;
+    website: string;
+    address: {
+        street: string;
+        suite: string;
+        city: string;
+        zipcode: string;
+        geo: {
+        lat: string;
+        lng: string;
+        };
+    };
+    company: {
+        name: string;
+        catchPhrase: string;
+        bs?: string;
+    };
+}
