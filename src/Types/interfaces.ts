@@ -30,13 +30,6 @@ export interface userInfo {
 }
 
 export interface postUser {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-}
-
-export interface postUser {
     userId: number,
     id: number,
     title: string,
@@ -101,4 +94,27 @@ export interface postViews {
     name: string,
     title: string,
     message: string
+}
+
+export interface publish {
+    id: number;
+    title: string;
+    body: string;
+    userId: number;
+}
+
+export interface PaginatedResponse<T> {
+        pageIndex: number;
+        pageSize: number;
+        totalCount: number;
+        totalPages: number;
+        hasPreviousPage: boolean;
+        hasNextPage: boolean;
+        items: T[];
+    }
+
+export interface NewPost {
+    title: string;
+    body: string;
+    userId: number;
 }

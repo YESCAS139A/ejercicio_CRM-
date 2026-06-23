@@ -6,6 +6,7 @@ import App from "../App"
 import Details from "../Details/Details"
 import Notes from "../Notes/Notes"
 import PostNotes from "../Notes/Components/PostNotes"
+import Publish from "../Publish/Publish"
 
 const AppRouter = () => {
   return (
@@ -23,7 +24,10 @@ const AppRouter = () => {
     <Route path="notes" element={<Notes />} >
       <Route path=":id" element={<PostNotes />} />
     </Route>
+    <Route path="publish" element={<Publish/>}/>
   </Route> 
+
+  
 
   <Route path="/" element={<Navigate to="/home" />} />
   <Route path="*" element={<Navigate to="/home" />} />

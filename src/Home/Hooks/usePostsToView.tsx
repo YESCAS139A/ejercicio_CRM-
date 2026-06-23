@@ -8,10 +8,18 @@ const PostsToView = () => {
     useEffect(() => {
     async function fetchPost(): Promise<void> {
         try {
+            
+            const userApiUrl = import.meta.env.VITE_USUARIOS_URL;
+            const postApiUrl = import.meta.env.VITE_POST_URL;
+
             const [usersRes, postRes] = await Promise.all([
-                fetch("https://api-contactos-ia5p.onrender.com/api/v1/User/"),
-                fetch("https://api-contactos-ia5p.onrender.com/api/v1/Post/all")
+                fetch(`${userApiUrl}/`),
+                fetch(`${postApiUrl}/`)
             ])
+
+            if (!usersRes.ok || !postRes.ok) {
+                throw new Error(`Fetch failed: users=${usersRes.status} posts=${postRes.status}`);
+            }
 
             const usersData = await usersRes.json()
             const postsData = await postRes.json()
@@ -36,6 +44,7 @@ const PostsToView = () => {
             setPost(rowsPosts)
         } catch (error) {
             console.error(error)
+            setPost([])
         } finally {
             setLoading(false)
         }

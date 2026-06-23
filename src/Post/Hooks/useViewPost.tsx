@@ -29,7 +29,7 @@ const useViewPost = (page: number) => {
 
     const handler = setTimeout(() => {
       setDebouncedSearch(searchQuery);
-    }, 500);
+    }, 700);
 
     return () => clearTimeout(handler);
   }, [searchQuery]);
@@ -42,8 +42,11 @@ const useViewPost = (page: number) => {
         setLoading(true);
         setNotFound(false);
 
+        const postApiUrl = import.meta.env.VITE_POST_URL;
+        const userApiUrl = import.meta.env.VITE_USUARIOS_URL;
+
         const postRes = await fetch(
-          `https://api-contactos-ia5p.onrender.com/api/v1/Post/all?searchTerm=${debouncedSearch}&pageIndex=${page}&pageSize=5`
+          `${postApiUrl}?searchTerm=${debouncedSearch}&pageIndex=${page}&pageSize=5`
         );
 
         if (!postRes.ok) {
@@ -58,19 +61,17 @@ const useViewPost = (page: number) => {
         
         setTotalPages(postData.totalPages || 1);
         
-        // 🛠️ OBTENER NOMBRE REAL DESDE LA API:
-        let authorName = debouncedSearch; // Por si acaso, dejamos el término de búsqueda como respaldo
+        let authorName = debouncedSearch; 
 
         if (posts.length > 0) {
-          // Tomamos el userId del primer post devuelto para consultar quién es el dueño
           const targetUserId = posts[0].userId; 
           
           try {
-            const userRes = await fetch(`https://api-contactos-ia5p.onrender.com/api/v1/User/${targetUserId}`);
+            const userRes = await fetch(`${userApiUrl}/${targetUserId}`);
             if (userRes.ok) {
               const userData = await userRes.json();
               if (userData && userData.name) {
-                authorName = userData.name; // ¡Aquí capturamos el nombre completo real! (Ej: "Efrain")
+                authorName = userData.name; 
               }
             }
           } catch (userError) {
@@ -78,16 +79,15 @@ const useViewPost = (page: number) => {
           }
         }
 
-        // Asignamos los posts usando el nombre real obtenido
         setPost(posts.map((p) => ({
           id: p.id,
-          name: authorName, // Guardamos el nombre oficial (ej: "Efrain") en lugar del término (ej: "efra")
+          name: authorName, 
           title: p.title,
           message: p.body
         })));
 
       } catch (error) {
-        console.error("Error fetching data from /Post/all:", error);
+        console.error("Error fetching posts", error);
         setNotFound(true);
         setPost([]);
         setTotalPages(1);

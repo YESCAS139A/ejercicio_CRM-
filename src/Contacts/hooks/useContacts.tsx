@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import type { userInfo, contact } from "../../Types/interfaces";
 
+
 const useContacts = (page: number, searchTerm: string = "") => {
     const [loading, setLoading] = useState<boolean>(true);
     const [contacts, setContacts] = useState<contact[]>([])
@@ -12,7 +13,7 @@ const useContacts = (page: number, searchTerm: string = "") => {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedSearch(searchTerm);
-        }, 400); 
+        }, 700); 
 
         return () => clearTimeout(handler);
     }, [searchTerm]);
@@ -31,7 +32,8 @@ const useContacts = (page: number, searchTerm: string = "") => {
                 }
 
                 const params = new URLSearchParams(queryObj);
-                const userRes = await fetch(`https://api-contactos-ia5p.onrender.com/api/v1/User?${params.toString()}`);
+                const baseUrl = import.meta.env.VITE_USUARIOS_URL;
+                const userRes = await fetch(`${baseUrl}?${params.toString()}`);
                 
                 if (!userRes.ok) {
                     setContacts([]);

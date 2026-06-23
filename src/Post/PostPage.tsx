@@ -23,7 +23,7 @@ const PostPage = () => {
       {searchId === null && (
         <div className="mx-4 mt-8 p-8 border border-dashed border-gray-200 rounded-xl bg-gray-50 flex items-center justify-center">
           <p className="text-gray-400 text-sm font-medium text-center">
-            Los datos no han sido cargados. Haga una búsqueda por ID de usuario.
+            Los datos no han sido cargados. Haga una busqueda
           </p>
         </div>
       )}
@@ -54,7 +54,6 @@ const PostPage = () => {
             <p className="text-gray-400 text-center text-sm p-8">Este usuario no cuenta con publicaciones.</p>
           )}
 
-          {/* Sigue exactamente el mismo patrón que la vista Contacts */}
           {!loading && post.length > 0 && (
             <Pagination 
               currentPage={page} 
