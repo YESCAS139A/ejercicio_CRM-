@@ -7,18 +7,15 @@ const useAddUser = () => {
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<boolean>(false);
 
-    // Obtener la URL base de las variables de entorno
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     const USERS_URL = import.meta.env.VITE_USUARIOS_URL;
 
-    // Se actualizó el Promise para retornar la nueva interfaz UserResponse o null
     const createUser = async (userData: UserFormData): Promise<UserResponse | null> => {
         setLoading(true);
         setError(null);
         setSuccess(false);
 
         try {
-        // Construir el objeto estructurado (anidado) que espera la API
         const payload = {
             name: userData.name,
             username: userData.username,
@@ -56,7 +53,6 @@ const useAddUser = () => {
             throw new Error(errorData.message || `Error ${response.status}: No se pudo crear el usuario`);
         }
 
-        // Forzamos/asentamos que los datos que vienen mapean exactamente con UserResponse
         const data: UserResponse = await response.json();
         setSuccess(true);
         return data;

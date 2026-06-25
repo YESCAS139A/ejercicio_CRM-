@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa";
 import type { searchBarProps } from "../Types/interfaces";
 
 
-const SearchBar = ({ onSearch }: searchBarProps) => {
+const SearchBar = ({ onSearch, placeholder = "Search" }: searchBarProps) => {
     return (
 
         <div className="relative">
@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }: searchBarProps) => {
             </div>
             <input 
             type="text" 
-            placeholder="Search"
+            placeholder={placeholder}
             onChange={(e) => onSearch(e.target.value)}
             className="bg-white border border-gray-300 rounded-xl pl-10 pr-4 py-0.5 w-96 focus:outline-none focus:ring-2 focus:ring-blue-300" />
         </div>

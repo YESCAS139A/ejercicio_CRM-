@@ -22,7 +22,7 @@ const Contacts = () => {
     <>
       <div className="flex-1 flex justify-center m-2">
 
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} placeholder="ej:efrain"/>
       </div>
       
       <div className="mx-4 border border-gray-200 rounded-xl overflow-hidden bg-white">
@@ -36,7 +36,7 @@ const Contacts = () => {
         <ul className="h-130 overflow-y-auto">
           {loading ? (
             <div className="flex items-center justify-center p-8">
-              <p className="text-gray-400 text-sm">Cargando Contactos...</p>
+              <p className="text-gray-400 text-sm">Loading Contacts...</p>
             </div>
           ) : (
             <>
@@ -63,7 +63,7 @@ const Contacts = () => {
 
               {contacts.length === 0 && (
                 <p className="text-gray-400 text-sm text-center py-8">
-                  No se encontraron usuarios coincidentes en el sistema.
+                  No matching users were found in the system.
                 </p>
               )}
             </>

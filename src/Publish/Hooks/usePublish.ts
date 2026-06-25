@@ -59,13 +59,11 @@ const usePublish = (initialUserId: number) => {
 
             const created: publish = await res.json();
             
-            // Forzamos que traiga el userId correcto por si el backend lo omite
             const postConfirmadoPorServidor = {
                 ...created,
                 userId: created.userId ?? newPost.userId
             };
 
-            // MODIFICACIÓN: Ponemos [...prev, nuevo] para que se agregue ABAJO del todo
             setPosts((prev) => [...prev, postConfirmadoPorServidor]);
             return created;
         } catch (err) {
@@ -78,7 +76,6 @@ const usePublish = (initialUserId: number) => {
         }
     }, []);
 
-    // Se ejecuta de forma asíncrona interna para evitar advertencias de linter
     useEffect(() => {
         const loadData = async () => {
             await fetchPosts();
@@ -86,7 +83,6 @@ const usePublish = (initialUserId: number) => {
         loadData();
     }, [fetchPosts]);
 
-    // Filtramos convirtiendo a String para evitar fallos si uno es número y otro texto
     const userPosts = useMemo(() => {
         return posts.filter((post) => String(post.userId) === String(initialUserId));
     }, [posts, initialUserId]);

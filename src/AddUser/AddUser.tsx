@@ -57,7 +57,6 @@ const AddUser = () => {
     };
 
     return (
-        // Se cambió h-full por min-h-0 y max-w-4xl para estabilidad de flexbox
         <div className="w-full max-w-4xl mx-auto p-4 flex flex-col min-h-0">
             
             {/* Cabecera fija */}
@@ -65,7 +64,7 @@ const AddUser = () => {
                 <h1 className="text-xl md:text-2xl font-bold text-gray-800">Add User</h1>
                 {success && (
                     <span className="text-green-600 text-sm bg-green-50 px-3 py-1 rounded-full border border-green-200 animate-fade-in">
-                        ✅ Usuario creado con éxito
+                        ✅ User successfully created
                     </span>
                 )}
             </div>
@@ -78,11 +77,11 @@ const AddUser = () => {
                 {/* Información básica */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
                         <input
                             type="text"
                             name="name"
-                            placeholder="Nombre completo"
+                            placeholder="Full Name"
                             value={formData.name}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
@@ -90,11 +89,11 @@ const AddUser = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Usuario *</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">User *</label>
                         <input
                             type="text"
                             name="username"
-                            placeholder="Nombre de usuario"
+                            placeholder="Username"
                             value={formData.username}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
@@ -109,7 +108,7 @@ const AddUser = () => {
                         <input
                             type="email"
                             name="email"
-                            placeholder="correo@ejemplo.com"
+                            placeholder="email@example.com"
                             value={formData.email}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
@@ -117,7 +116,7 @@ const AddUser = () => {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                         <input
                             type="tel"
                             name="phone"
@@ -130,11 +129,11 @@ const AddUser = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Sitio web</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Web site</label>
                     <input
                         type="text"
                         name="website"
-                        placeholder="www.ejemplo.com"
+                        placeholder="www.example.com"
                         value={formData.website}
                         onChange={handleChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
@@ -143,15 +142,15 @@ const AddUser = () => {
 
                 {/* Sección de dirección */}
                 <div className="border-t border-gray-200 pt-4 mt-2">
-                    <h2 className="text-lg font-semibold text-gray-800 mb-3">Dirección</h2>
+                    <h2 className="text-lg font-semibold text-gray-800 mb-3">Address</h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Calle</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Street</label>
                             <input
                                 type="text"
                                 name="street"
-                                placeholder="Calle Principal"
+                                placeholder="Main Street"
                                 value={formData.street}
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
@@ -172,7 +171,7 @@ const AddUser = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Ciudad</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
                             <input
                                 type="text"
                                 name="city"
@@ -183,7 +182,7 @@ const AddUser = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Código postal</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">ZIP code</label>
                             <input
                                 type="text"
                                 name="zipcode"
@@ -197,10 +196,10 @@ const AddUser = () => {
 
                     {/* Georreferencia */}
                     <div className="mt-4 bg-gray-50 p-3 rounded-lg border border-gray-100">
-                        <h3 className="text-sm font-medium text-gray-700 mb-2">Coordenadas (Geo)</h3>
+                        <h3 className="text-sm font-medium text-gray-700 mb-2">Coordinates (Geo) </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div>
-                                <label className="block text-xs text-gray-600 mb-1">Latitud</label>
+                                <label className="block text-xs text-gray-600 mb-1">Latitude</label>
                                 <input
                                     type="text"
                                     name="lat"
@@ -211,7 +210,7 @@ const AddUser = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs text-gray-600 mb-1">Longitud</label>
+                                <label className="block text-xs text-gray-600 mb-1">Length</label>
                                 <input
                                     type="text"
                                     name="lng"
@@ -227,26 +226,26 @@ const AddUser = () => {
 
                 {/* Sección de compañía */}
                 <div className="border-t border-gray-200 pt-4 mt-2">
-                    <h2 className="text-lg font-semibold text-gray-800 mb-3">Compañía</h2>
+                    <h2 className="text-lg font-semibold text-gray-800 mb-3">Company</h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
                             <input
                                 type="text"
                                 name="companyName"
-                                placeholder="Nombre de la empresa"
+                                placeholder="Company Name"
                                 value={formData.companyName}
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Frase</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Phrase</label>
                             <input
                                 type="text"
                                 name="catchPhrase"
-                                placeholder="Frase descriptiva"
+                                placeholder="Descriptive phrase"
                                 value={formData.catchPhrase}
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
@@ -269,7 +268,7 @@ const AddUser = () => {
                         disabled={loading}
                         className="bg-blue-500 hover:bg-blue-600 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 w-full md:w-auto shadow-sm"
                     >
-                        {loading ? 'Creando usuario...' : 'Crear Usuario'}
+                        {loading ? 'Create user...' : 'Create User'}
                     </button>
                 </div>
             </form>

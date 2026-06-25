@@ -6,8 +6,12 @@ import App from "../App"
 import Details from "../Details/Details"
 import Notes from "../Notes/Notes"
 import PostNotes from "../Notes/Components/PostNotes"
-import Publish from "../Publish/Publish"
-import AddUser from "../AddUser/addUser"
+import AddUser from "../AddUser/AddUser"
+import Publish from "../Publish/publish"
+import LogIn from "../LogIn/LogIn"
+import Register from "../Register/Register"
+
+
 
 
 
@@ -29,6 +33,8 @@ const AppRouter = () => {
     </Route>
     <Route path="publish" element={<Publish/>}/>
     <Route path="add" element={<AddUser/>}/>
+    <Route path="login" element={<LogIn/>}/>
+    <Route path="register" element={<Register/>}/>
   </Route> 
 
   

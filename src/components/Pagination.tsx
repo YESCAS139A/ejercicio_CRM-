@@ -11,18 +11,18 @@ const Pagination = ({ currentPage, totalPages, onPageChange}: PaginationProps) =
         disabled={currentPage === 1}
         className="px-3 py-1 text-xs font-medium border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:curspr-not-allowed transition-colors"
         >
-          Anterior
+          Previous
       </button>
 
       <span className="text-xs text-gray-600">
-        Pagina <b className="text-gray-900">{currentPage}</b> de {totalPages}
+        Page <b className="text-gray-900">{currentPage}</b> de {totalPages}
       </span>
       <button
       onClick={() => onPageChange(currentPage + 1 )}
       disabled={currentPage === totalPages}
       className="px-3 py-1 text-xs font-medium border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:curspr-not-allowed transition-colors"
       >
-        Siguiente
+        Next
       </button>
     </div>
   );

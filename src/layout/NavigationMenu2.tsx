@@ -41,12 +41,27 @@ const NavigationMenu2 = () => {
                         <MdOutlinePublish />
                         publish
                     </Link></li>
+
                     <li className="text-2xl">
                         <Link to="/home/Add" className="flex items-center gap-3">
                         <IoIosPersonAdd />
                         Add User
                     </Link></li>
                 </ul>
+                
+                <li className="text-2xl">
+                        <Link to="/home/login" className="flex items-center gap-3">
+                        
+                        login
+                    </Link></li>
+
+                    <li className="text-2xl">
+                        <Link to="/home/Register" className="flex items-center gap-3">
+                        
+                        Register
+                    </Link></li>
+
+
             </div>
             <div className="flex-1 p-8 bg-slate-50">
                 <Outlet/>

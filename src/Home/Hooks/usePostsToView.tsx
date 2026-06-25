@@ -31,7 +31,7 @@ const PostsToView = () => {
                 const autor = users.find((u) => u.id === post.userId)
                 return {
                     id: post.id,
-                    name: autor?.name ?? "Desconocido",
+                    name: autor?.name ?? "Unknown",
                     initials: autor?.name
                         ?.split(" ")
                         .filter(Boolean)

@@ -17,13 +17,13 @@ const PostPage = () => {
   return (
     <>
       <div className="flex-1 flex justify-center m-2">
-        <SearchBar onSearch={handleSearchAndResetPage} />
+        <SearchBar placeholder="ej:efrain" onSearch={handleSearchAndResetPage} />
       </div>
 
       {searchId === null && (
         <div className="mx-4 mt-8 p-8 border border-dashed border-gray-200 rounded-xl bg-gray-50 flex items-center justify-center">
           <p className="text-gray-400 text-sm font-medium text-center">
-            Los datos no han sido cargados. Haga una busqueda
+            The data has not been loaded. Search by name.
           </p>
         </div>
       )}
@@ -31,14 +31,14 @@ const PostPage = () => {
       {notFound && searchId !== null && !loading && (
         <div className="mx-4 mt-8 p-8 flex items-center justify-center">
           <p className="text-red-400 text-sm font-medium text-center">
-            Usuario o Posts no encontrados en el sistema.
+            User or posts not found in the system.
           </p>
         </div>
       )}
 
       {loading && (
         <div className="flex items-center justify-center p-8">
-          <p className="text-gray-400 text-sm">Cargando Posts...</p>
+          <p className="text-gray-400 text-sm">Loading Posts...</p>
         </div>
       )}
 
@@ -51,7 +51,7 @@ const PostPage = () => {
               ))}
             </ul>
           ) : (
-            <p className="text-gray-400 text-center text-sm p-8">Este usuario no cuenta con publicaciones.</p>
+            <p className="text-gray-400 text-center text-sm p-8">This user has no posts.</p>
           )}
 
           {!loading && post.length > 0 && (

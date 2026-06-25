@@ -66,7 +66,8 @@ export interface albums {
 }
 
 export interface searchBarProps {
-    onSearch: (value: string) => void
+    onSearch: (value: string) => void;
+    placeholder?: string;
 }
 
 export interface summaryConv {
