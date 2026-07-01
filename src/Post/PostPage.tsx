@@ -17,7 +17,7 @@ const PostPage = () => {
   return (
     <>
       <div className="flex-1 flex justify-center m-2">
-        <SearchBar placeholder="ej:efrain" onSearch={handleSearchAndResetPage} />
+        <SearchBar placeholder="Ex: efrain" onSearch={handleSearchAndResetPage} />
       </div>
 
       {searchId === null && (

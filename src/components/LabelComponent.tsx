@@ -1,9 +1,8 @@
-export interface labelComponentProps{
+export interface LabelComponentProps{
     name: string;
-    className?: string;
 }
 
-const LabelComponent = ({name}: labelComponentProps) => {
+const LabelComponent = ({name}: LabelComponentProps) => {
     return (
         <div className="h-2 mb-5">
             <label>{name}</label>

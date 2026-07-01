@@ -55,11 +55,7 @@ const NavigationMenu2 = () => {
                         login
                     </Link></li>
 
-                    <li className="text-2xl">
-                        <Link to="/home/Register" className="flex items-center gap-3">
-                        
-                        Register
-                    </Link></li>
+                    
 
 
             </div>

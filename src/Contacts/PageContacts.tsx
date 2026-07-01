@@ -22,7 +22,7 @@ const Contacts = () => {
     <>
       <div className="flex-1 flex justify-center m-2">
 
-        <SearchBar onSearch={handleSearch} placeholder="ej:efrain"/>
+        <SearchBar onSearch={handleSearch} placeholder="Ex: efrain"/>
       </div>
       
       <div className="mx-4 border border-gray-200 rounded-xl overflow-hidden bg-white">
