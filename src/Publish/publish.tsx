@@ -1,10 +1,11 @@
 import { useState } from "react";
 import usePublish from "./Hooks/usePublish";
+import { useAuth } from "../Auth/hooks/useAuth";
 
 const Publish = () => {
-    const Usuario = 2; 
 
-    const { userPosts, createPost, loading, error, notFound } = usePublish(Usuario);
+    const { user } = useAuth();
+    const { userPosts, createPost, loading, error, notFound } = usePublish(user?.id);
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
 
@@ -15,7 +16,7 @@ const Publish = () => {
         const result = await createPost({
             title: title.trim() || "Sin título",
             body: body.trim(),
-            userId: Usuario,
+            userId: user?.id,
         });
 
         if (result) {
