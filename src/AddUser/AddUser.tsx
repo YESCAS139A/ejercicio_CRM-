@@ -69,10 +69,9 @@ const AddUser = () => {
                 )}
             </div>
 
-            {/* Formulario con scroll corregido mediante max-h acotado y overflow */}
             <form 
                 onSubmit={handleSubmit}
-                className="w-full max-h-[calc(100vh-140px)] overflow-y-auto space-y-4 bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm pr-2 md:pr-4"
+                className="w-full space-y-4 bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm"
             >
                 {/* Información básica */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -254,19 +253,19 @@ const AddUser = () => {
                     </div>
                 </div>
 
-                {/* Errores de API */}
+                
                 {error && (
                     <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm sticky bottom-0">
                         ❌ {error}
                     </div>
                 )}
 
-                {/* Botón de acción */}
-                <div className="flex justify-end pt-4 border-t border-gray-200 sticky bottom-0 bg-white">
+                
+                <div className="flex justify-end pt-4 border-t border-gray-200">
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-blue-500 hover:bg-blue-600 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 w-full md:w-auto shadow-sm"
+                        className="bg-blue-500 hover:bg-blue-600 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 w-full md:w-auto shadow-sm  cursor-pointer"
                     >
                         {loading ? 'Create user...' : 'Create User'}
                     </button>

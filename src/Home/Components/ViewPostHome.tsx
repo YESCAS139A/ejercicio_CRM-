@@ -24,8 +24,9 @@ const PostsToView = () => {
               {p.initials}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-gray-800">{p.name}</p>
-              <p className="text-xs text-gray-500 truncate">{p.messaje}</p>
+              <p className="text-sm font-medium text-gray-800">{p.messaje}</p>
+              <p className="text-xs text-gray-500 truncate">{p.name}</p>
+              
             </div>
 
           </li>

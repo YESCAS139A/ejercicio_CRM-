@@ -5,24 +5,19 @@ type ContactCardProps = {
     city: string;
 }
 
-const ContactCard = ({initials, name, email, city}: ContactCardProps) => {
-  return (
-    <>
-        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-sm font-medium text-blue-800 shrink-0">
-            {initials}
-        </div>
-        <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
-                    <p className="text-xs text-gray-500 truncate">{initials}</p>
-                </span>
-                <p className="text-sm font-medium text-gray-800">{name}</p>
+const ContactCard = ({ initials, name, email, city }: ContactCardProps) => {
+    return (
+        <>
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-blue-100 flex items-center justify-center text-xs md:text-sm font-medium text-blue-800 shrink-0">
+                {initials}
             </div>
-                <p className="text-sm font-medium text-gray-800">{email}</p>
-                <p className="text-sm font-medium text-gray-800">{city}</p>
-        </div>
+            <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-800 truncate">{name}</p>
+                <p className="text-xs md:text-sm text-gray-500 truncate">{email}</p>
+                <p className="text-xs md:text-sm text-gray-500 truncate hidden sm:block">{city}</p>
+            </div>
         </>
-  )
+    )
 }
 
 export default ContactCard

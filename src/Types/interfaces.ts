@@ -117,7 +117,7 @@ export interface PaginatedResponse<T> {
 export interface NewPost {
     title: string;
     body: string;
-    userId: number;
+    userId: string;
 }
 
 export interface UserFormData {

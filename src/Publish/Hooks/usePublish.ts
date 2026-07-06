@@ -3,7 +3,7 @@ import type { NewPost, PaginatedResponse, publish } from "../../Types/interfaces
 
 const API_URL = import.meta.env.VITE_POST_URL;
 
-const usePublish = (initialUserId: number) => {
+const usePublish = (initialUserId: string) => {
     const [posts, setPosts] = useState<publish[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);

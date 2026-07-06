@@ -55,7 +55,7 @@ const Publish = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-blue-500 hover:bg-blue-600 disabled:opacity-50 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                        className="bg-blue-500 hover:bg-blue-600 disabled:opacity-50 text-white px-4 py-2 rounded-lg font-medium transition-colors cursor-pointer"
                     >
                         {loading ? "Publicando..." : "Publicar"}
                     </button>

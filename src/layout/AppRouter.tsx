@@ -10,38 +10,38 @@ import AddUser from "../AddUser/AddUser"
 import Publish from "../Publish/publish"
 import LogIn from "../LogIn/LogIn"
 import Register from "../Register/Register"
-
-
-
+import ProtectedRoute from "./ProtectedRoute"
 
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
-        <Routes> 
-  <Route path="/home" element={<App />}>
-    <Route index element={<Home />} />
-    <Route path="contacts" element={<Contacts />}>
-    <Route path=":id" element={
-        <Details/>
-      }/>
-    </Route>
-    
-    <Route path="post" element={<Post />} />
-    <Route path="notes" element={<Notes />} >
-      <Route path=":id" element={<PostNotes />} />
-    </Route>
-    <Route path="publish" element={<Publish/>}/>
-    <Route path="add" element={<AddUser/>}/>
-    <Route path="login" element={<LogIn/>}/>
-    <Route path="register" element={<Register/>}/>
-  </Route> 
+      <Routes>
 
-  
+        {/* Rutas protegidas: TODAS viven dentro de <App />, que trae TopBar + NavigationMenu2 */}
+        <Route path="/" element={
+          <ProtectedRoute>
+            <App />
+          </ProtectedRoute>
+        }>
+          <Route index element={<Home />} />
+          <Route path="contacts" element={<Contacts />}>
+            <Route path=":id" element={<Details/>}/>
+          </Route>
+          <Route path="post" element={<Post />} />
+          <Route path="notes" element={<Notes />} >
+            <Route path=":id" element={<PostNotes />} />
+          </Route>
+          <Route path="publish" element={<Publish/>}/>
+          <Route path="add" element={<AddUser/>}/>
+        </Route>
 
-  <Route path="/" element={<Navigate to="/home" />} />
-  <Route path="*" element={<Navigate to="/home" />} />
-</Routes>
+        {/* Rutas públicas: fuera de <App />, sin TopBar ni sidebar */}
+        <Route path="/login" element={<LogIn/>}/>
+        <Route path="/register" element={<Register/>}/>
+
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </BrowserRouter>
   )
 }

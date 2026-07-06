@@ -6,7 +6,7 @@ import useLogIn from "./hook/useLogIn";
 
 const LogIn = () => {
 
-    const {userName, password, handleUsernameChange, handlePasswordChange, handleSubmit} = useLogIn();
+    const {email, password, error, loading, handleEmailChange, handlePasswordChange, handleSubmit} = useLogIn();
 
     return (
         <div className="w-full max-w-4xl mx-auto p-4 flex flex-col min-h-0">
@@ -18,11 +18,12 @@ const LogIn = () => {
                     <CiUser className="w-25 h-25 text-gray-600" />
                 </div>
 
-                <LabelComponent name="User Name"/>
+                <LabelComponent name="Email"/>
                 <InputComponent 
-                placeholder="Ex:Abraham"
-                value={userName}
-                onChange={handleUsernameChange}
+                placeholder="Abraham@gmail.com"
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
                 required
                 />
 
@@ -39,15 +40,21 @@ const LogIn = () => {
                     <span className="font-medium">
                         Sign up for an account if you don't have one 
                     </span>
-                    <Link to="/home/Register" className="text-blue-500">
+                    <Link to="/Register" className="text-blue-500">
                         Register</Link>
                         </p>
                         
+                
+                {error && (
+                    <p className="text-sm text-red-500 mt-1">{error}</p>
+                )}
+
                 <div className="flex justify-end pt-4 border-t border-gray-200 sticky bottom-0 bg-white">
                     <button
                         type="submit"
-                        className="bg-blue-500 hover:bg-blue-600 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 w-full md:w-auto shadow-sm"
-                    >Log In</button>
+                        disabled={loading}
+                        className="bg-blue-500 hover:bg-blue-600 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 w-full md:w-auto shadow-sm cursor-pointer"
+                    >{loading ? "Logging in..." : "log in"}</button>
                 </div>
             </form>
         </div>

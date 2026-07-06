@@ -161,7 +161,7 @@ const useRegister = () => {
         // comentario para cuando tenga la api lista aqui iria el await fetch
 
         resetForm();
-        navigate("/home/login");
+        navigate("/login");
 
     };
 
