@@ -11,12 +11,12 @@ const Publish = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!body.trim()) return;
+        if (!body.trim() || !user?.id) return;
 
         const result = await createPost({
             title: title.trim() || "Sin título",
             body: body.trim(),
-            userId: user?.id,
+            userId: user.id,
         });
 
         if (result) {

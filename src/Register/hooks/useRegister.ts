@@ -3,54 +3,32 @@ import { useNavigate } from "react-router-dom";
 
 export interface InfoRegisterProps {
     name: string;
+    lastName: string;
     username: string;
     email: string;
-    phone: string;
-    website: string;
-    address: {
-        street: string;
-        suite: string;
-        city: string;
-        zipcode: string;
-        geo: {
-            lat: string;
-            lng: string;
-        };
-    };
-    company: {
-        name: string;
-        phrase: string;
-    };
     password: string;
 }
 
-
+const API_URL = import.meta.env.VITE_REGISTER_URL;
 
 const useRegister = () => {
 
     const navigate = useNavigate();
 
     const [name, setName] = useState<string>("");
+    const [lastName, setLastName] = useState<string>("")
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
-    const [phone, setPhone] = useState<string>("");
-    const [phoneError, setPhoneError] = useState<string>("");
-    const [website, setWebsite] = useState<string>("");
-
-    const [street, setStreet] = useState<string>("");
-    const [suite, setSuite] = useState<string>("");
-    const [city, setCity] = useState<string>("");
-    const [zipcode, setZipcode] = useState<string>("");
-    const [lat, setLat] = useState<string>("");
-    const [lng, setLng] = useState<string>("");
-
-    const [companyName, setCompanyName] = useState<string>("");
-    const [companyPhrase, setCompanyPhrase] = useState<string>("");
-
     const [password, setPassword] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
+    };
+
+    const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setLastName(e.target.value);
     };
 
     const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -61,139 +39,68 @@ const useRegister = () => {
         setEmail(e.target.value);
     };
 
-    const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-    const isValid = /^[0-9+\-\s()]*$/.test(value);
-
-    if (isValid) {
-        setPhone(value);
-        setPhoneError(""); // limpia el error si ahora es válido
-    } else {
-        setPhoneError("Solo se permiten números, espacios, + y -");
-        // nota: no actualizamos "phone", así el estado nunca guarda el carácter inválido
-    }
-    };
-
-    const handleWebsiteChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setWebsite(e.target.value);
-    };
-
-    const handleStreetChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setStreet(e.target.value);
-    };
-
-    const handleSuiteChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSuite(e.target.value);
-    };
-
-    const handleCityChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setCity(e.target.value);
-    };
-
-    const handleZipcodeChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setZipcode(e.target.value);
-    };
-
-    const handleLatChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLat(e.target.value);   
-    };
-
-    const handleLngChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLng(e.target.value);   
-    };
-
-    const handleCompanyNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setCompanyName(e.target.value);
-    };
-
-    const handleCompanyPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setCompanyPhrase(e.target.value);
-    };
-
     const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     };
 
     const resetForm = () => {
-    setName("");
-    setUsername("");
-    setEmail("");
-    setPhone("");
-    setWebsite("");
-    setStreet("");
-    setSuite("");
-    setCity("");
-    setZipcode("");
-    setLat("");
-    setLng("");
-    setCompanyName("");
-    setCompanyPhrase("");
-    setPassword("");
-};
+        setName("");
+        setLastName("");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+    };
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setError(null);
 
         const infoRegister: InfoRegisterProps = {
             name,
+            lastName,
             username,
             email,
-            phone,
-            website,
-            address: {
-                street,
-                suite,
-                city,
-                zipcode,
-                geo: {
-                    lat,
-                    lng,
-                },
-            },
-            company: {
-                name: companyName,
-                phrase: companyPhrase,
-            },
             password,
         };
 
-        console.log("Datos a enviar:", infoRegister);
-        // comentario para cuando tenga la api lista aqui iria el await fetch
+        setLoading(true);
+        try {
+            const res = await fetch(API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(infoRegister),
+            });
 
-        resetForm();
-        navigate("/login");
+            if (!res.ok) {
+                const text = await res.text().catch(() => "");
+                throw new Error(`Error during registration (${res.status}): ${text}`);
+            }
 
+            resetForm();
+            navigate("/login");
+        } catch (err) {
+            console.error("Registration error:", err);
+            const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+            setError(message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return {
         name,
+        lastName,
         username,
         email,
-        phone,
-        phoneError,
-        website,
-        street,
-        suite,
-        city,
-        zipcode,
-        lat,
-        lng,
-        companyName,
-        companyPhrase,
         password,
+        loading,
+        error,
         handleNameChange,
+        handleLastNameChange,
         handleUsernameChange,
         handleEmailChange,
-        handlePhoneChange,
-        handleWebsiteChange,
-        handleStreetChange,
-        handleSuiteChange,
-        handleCityChange,
-        handleZipcodeChange,
-        handleLatChange,
-        handleLngChange,
-        handleCompanyNameChange,
-        handleCompanyPhraseChange,
         handlePasswordChange,
         handleSubmit,
     };

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
 
 export interface userInfo {
-    id: number;
+    id: string;
     name: string;
     userName: string; 
     email: {
@@ -78,7 +78,7 @@ export interface summaryConv {
 }
 
 export interface contact {
-    id: number;
+    id: string;
     name: string;
     initials: string; 
     email: string;
@@ -88,6 +88,7 @@ export interface contact {
 export interface ModalProps {
     children: ReactNode;
     title?: string
+    size?: 'md' | 'xl';
 }
 
 export interface postViews {
@@ -98,10 +99,10 @@ export interface postViews {
 }
 
 export interface publish {
-    id: number;
+    id: string;
     title: string;
     body: string;
-    userId: number;
+    userId: string;
 }
 
 export interface PaginatedResponse<T> {
@@ -137,7 +138,7 @@ export interface UserFormData {
 }
 
 export interface UserResponse {
-    id: number;
+    id: string;
     name: string;
     username: string;
     email: string;

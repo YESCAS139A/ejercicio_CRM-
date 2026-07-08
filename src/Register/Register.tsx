@@ -6,8 +6,8 @@ import useRegister from "./hooks/useRegister";
 const Register = () => {
 
     const {
-        name, username, email, password,
-        handleNameChange, handleUsernameChange, handleEmailChange,
+        name, lastName , username, email, password, loading, error,
+        handleNameChange, handleLastNameChange , handleUsernameChange, handleEmailChange,
         handlePasswordChange, handleSubmit,
     } = useRegister();
 
@@ -26,7 +26,15 @@ const Register = () => {
                 <InputComponent
                     value={name}
                     onChange={handleNameChange}
-                    placeholder="Full name"
+                    placeholder="First name"
+                    required
+                />
+
+                <LabelComponent name="Last Names"/>
+                <InputComponent
+                    value={lastName}
+                    onChange={handleLastNameChange}
+                    placeholder="Last Name"
                     required
                 />
 
@@ -60,11 +68,18 @@ const Register = () => {
                     required
                 />
 
+                {error && (
+                    <p className="text-red-500 text-sm">{error}</p>
+                )}
+
                 <div className="flex justify-end pt-4 border-t border-gray-200 ">
                     <button
                         type="submit"
                         className="bg-blue-500 hover:bg-blue-600 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200 w-full md:w-auto shadow-sm cursor-pointer"
-                    >Create Account</button>
+                        disabled={loading}
+                    >
+                        {loading ? "Creating an account..." : "Create Account"}
+                    </button>
                 </div>
                     
 

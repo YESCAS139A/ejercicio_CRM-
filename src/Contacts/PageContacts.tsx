@@ -57,7 +57,14 @@ const Contacts = () => {
                     >
                       Details
                     </Link>
+                    <Link 
+                      to={`${u.id}/notes`}
+                      className="bg-blue-300/40 border border-gray-200 rounded-3xl px-3 py-1 text-xs font-medium cursor-pointer"
+                    >
+                      Notas
+                  </Link>
                   </li>
+                  
                 );
               })}
 

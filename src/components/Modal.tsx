@@ -4,7 +4,9 @@ import type { ModalProps } from "../Types/interfaces"
 import { createPortal } from "react-dom";
 
 
-const Modal = ({ children, title }: ModalProps) => {
+const Modal = ({ children, title, size }: ModalProps) => {
+
+    const sizeClasses = size === 'xl' ? 'max-w-2xl md:max-w-3xl' : 'max-w-lg';
 
     const navigate = useNavigate();
 
@@ -14,7 +16,7 @@ const Modal = ({ children, title }: ModalProps) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/30 backdrop-blur-sm p-4">
             <div className="absolute inset-0" onClick={handleClose} />
 
-            <div className="relative bg-black dark:bg-blue-300/40 rounded-lg shadow-xl w-full max-w-lg overflow-hidden">
+            <div className={`relative bg-white dark:bg-blue-300/40 rounded-lg shadow-xl w-full ${sizeClasses} overflow-hidden transition-all`}>
                 <div className="flex items-center justify-between p-4 border-b dark:border-gray-950">
                 <h3 className="text-xl font-semibold text-black dark:text-black">
                     {title || 'Details'}

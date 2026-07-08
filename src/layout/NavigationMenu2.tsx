@@ -3,7 +3,6 @@ import { FaHome } from "react-icons/fa";
 import { IoIosContacts } from "react-icons/io";
 import { MdLocalPostOffice } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
-import { MdSpeakerNotes } from "react-icons/md";
 import { MdPublish } from "react-icons/md";
 import { IoIosPersonAdd } from "react-icons/io";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -33,12 +32,6 @@ const NavigationMenu2 = () => {
                 <Link to="/post" onClick={closeMenu} className="flex items-center gap-3">
                     <MdLocalPostOffice />
                     Post
-                </Link>
-            </li>
-            <li className="text-2xl font-bold">
-                <Link to="/notes" onClick={closeMenu} className="flex items-center gap-3">
-                    <MdSpeakerNotes />
-                    Notes
                 </Link>
             </li>
             <li className="text-2xl font-bold">
